@@ -1,0 +1,56 @@
+/* file to editor styling */
+
+// declare vars
+
+let choudedElement = HTMLElement
+let addElList = HTMLDivElement
+let addButton = HTMLButtonElement
+let toolsDiv = HTMLDivElement
+
+/* workspace vars */
+
+let wsEl = HTMLIFrameElement
+let wsDoc = Document
+
+wsEl = document?.querySelector('div#workspace>iframe')
+wsDoc =
+    wsEl.contentDocument || wsEl.contentWindow.document
+
+// init vars
+
+toolsDiv = document?.querySelector('#tools')
+
+addElList = document.importNode(
+    document.querySelector('template#add-temp').content, true
+).firstElementChild
+
+addButton = toolsDiv.querySelector('#add-element>button')
+
+// client
+
+addButton.addEventListener('click', addState)
+
+// code
+
+function addState(ev) {
+    this.removeEventListener('click', addState)
+    addElList.style.margin = `0 0 0 ${this.offsetWidth + 5}px`;
+    this.insertAdjacentElement('afterend', addElList)
+
+    let childrens = this.nextElementSibling.children
+    Array.from(childrens).forEach(function (value, number, parent) {
+        value?.addEventListener('click', chouse)
+    })
+}
+
+function chouse(ev) {
+    console.log(`choused ${this.textContent}`)
+
+    choudedElement = document.createElement(this.textContent)
+    choudedElement.setAttribute('id', `new`)
+    wsDoc.body.appendChild(choudedElement)
+
+    addButton.parentElement.removeChild(addElList)
+    this?.removeEventListener('click', chouse)
+    addButton.addEventListener('click', addState)
+}

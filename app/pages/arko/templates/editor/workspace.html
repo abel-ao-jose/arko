@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arko Workspace</title>
+    <link href="{{ url_for('editor.static', filename='style/material-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('editor.static', filename='style/material-symbols.css') }}" rel="stylesheet">
+    <link href="{{ url_for('editor.static', filename='style/main-tools.css') }}" rel="stylesheet">
+    <link href="{{ url_for('editor.static', filename='style/editor.css') }}" rel="stylesheet">
+    <link href="{{ url_for('editor.static', filename='style/windows.css') }}" rel="stylesheet">
+    <link href="{{ url_for('editor.static', filename='style/workspace.css') }}" rel="stylesheet">
+</head>
+{% set html_elements = ['iframe', 'anchor', 'button'] %}
+
+<body>
+    <!-- editor templates -->
+
+    <!-- element type template -->
+    <template id="add-temp">
+        <div id="html-elements-div">
+            {% for item in html_elements %}
+            <li translate="no">{{ item }}</li>
+            {% endfor %}
+        </div>
+    </template>
+
+    <!-- html tree template -->
+    <template id="html-tree">
+    </template>
+
+    <!-- html attributes edit template -->
+    <template id="attr-window">
+    </template>
+
+    <!-- css edit template -->
+    <template id="css-edit">
+    </template>
+
+    <!-- quick edit template -->
+    <template id="quick-edit">
+    </template>
+
+    <!-- editor tools space -->
+
+    <div id="tools">
+        <div id="main-tools">
+            <div id="file">
+                <button type="button">
+                    <span class="material-icons" translate="no" , title="Menu">menu</span>
+                </button>
+            </div>
+            <div id="details">
+                <ul id="project-detail">
+                    <li id="project-name">Nome do arquivo</li>
+                    <li id="current-page-title">Pagina actual</li>
+                </ul>
+            </div>
+            <div id="sm-tools">
+                <button id="selector_tool" type="button" title="Selector">
+                    <span class="material-symbols" , translate="no">arrow_selector_tool</span>
+                </button>
+            </div>
+            <div id="add-element-content">
+                <button id="add-element-tool" type="button" title="Add Element">
+                    <span class="material-icons" , translate="no">add</span>
+                </button>
+            </div>
+        </div>
+        <div id="windows">
+            windows
+        </div>
+        <div id="visibilityDiv">
+            <button id="visibility" type="button" title="Visibility">
+                <span class="material-icons" translate="no">visibility</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- editor workspace -->
+
+    <div id="workspace"><iframe srcdoc="" frameborder="0"></iframe></div>
+
+    <!-- scripts -->
+
+    <script type="module" src="{{ url_for('editor.static', filename='script/tools/modes.js') }}"></script>
+</body>
+
+</html>

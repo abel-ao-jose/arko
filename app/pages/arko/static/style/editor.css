@@ -1,0 +1,114 @@
+
+body {
+    position: relative;
+    
+    margin: 0;
+    padding: 0;
+}
+
+.hide-all {
+    visibility: hidden;
+}
+
+#tools,
+#workspace {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+}
+
+#tools {
+    z-index: 2;
+    margin: 10px;
+}
+
+#workspace {
+    position: fixed;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#workspace>iframe {
+    /* pointer-events: none; */
+    -webkit-user-select: none; 
+    user-select: none;
+    position: relative;
+    background-color: aqua;
+    width: 100%;
+    height: 100%;
+}
+
+#main-tools{
+    display: flex;
+    flex-direction: row;
+}
+
+#main-tools div {
+    margin: 0;
+    padding: 0;
+}
+
+#main-tools ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#main-tools #details {
+    margin: 0 0 0 10px;
+}
+
+#main-tools #sm-tools{
+    background-color: black;
+    margin-inline: 50px;
+    padding: 5px 0;
+}
+
+#main-tools #sm-tools li {
+    margin-inline: 10px;
+    float: left;
+}
+
+#add-element-content {
+    display: flex;
+    position: relative;
+}
+
+#add-element-content button{
+    z-index: 1;
+    position: absolute;
+}
+
+#html-elements-div {
+    z-index: 2;
+    list-style-type: none;
+    flex-grow: 1;
+    position: absolute;
+    background-color: aqua;
+}
+
+#html-elements-div{
+    list-style-type: none;
+    width: 100px;
+}
+
+#html-elements-div li{
+    -webkit-user-select: none;
+    user-select: none;
+    margin: 5px;
+    cursor: pointer;
+    padding:  0 0 0 10px;
+}
+
+#html-elements-div li:hover{
+    background-color: blue;
+}
+
+#html-elements-div li:active {
+    background-color: chartreuse;
+}
